@@ -1,0 +1,1 @@
+# maritim_privacy_policy
