@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kebijakan Privasi — Maritim Muda Connect</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:     #1a1a1a;
+      --mid:     #555;
+      --light:   #888;
+      --bg:      #faf9f7;
+      --white:   #ffffff;
+      --border:  #e2ddd6;
+      --accent:  #1c3a5e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.8;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 48px 100px;
+      background: var(--white);
+      min-height: 100vh;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      padding-bottom: 28px;
+      border-bottom: 2px solid var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .masthead-label {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 14px;
+    }
+
+    .masthead h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    .masthead-sub {
+      margin-top: 12px;
+      font-size: 15.5px;
+      color: var(--mid);
+      font-style: italic;
+    }
+
+    /* ── META LINE ── */
+    .meta-line {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 52px;
+      font-size: 13px;
+      color: var(--light);
+    }
+    .meta-line span strong { color: var(--mid); font-weight: 500; }
+
+    /* ── SECTION ── */
+    section { margin-bottom: 42px; }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .section-title .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--light);
+      min-width: 20px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: .01em;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── PERMISSION TABLE ── */
+    table.perm-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      font-size: 15.5px;
+    }
+    table.perm-table thead th {
+      text-align: left;
+      font-family: 'EB Garamond', serif;
+      font-size: 11.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--light);
+      padding: 0 12px 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-weight: 400;
+    }
+    table.perm-table tbody td {
+      padding: 13px 12px 13px 0;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.7;
+    }
+    table.perm-table tbody tr:last-child td { border-bottom: none; }
+    .perm-name {
+      font-size: 13.5px;
+      color: var(--accent);
+      font-weight: 600;
+      white-space: nowrap;
+      padding-right: 24px;
+      letter-spacing: .01em;
+    }
+
+    /* ── LIST ── */
+    ul.doc-list { list-style: none; padding: 0; margin: 10px 0; }
+    ul.doc-list li {
+      padding: 4px 0 4px 20px;
+      position: relative;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+    ul.doc-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #bbb;
+    }
+
+    /* ── NOTICE ── */
+    .notice {
+      border-left: 3px solid var(--accent);
+      padding: 12px 20px;
+      margin: 18px 0;
+      background: #f2f5f9;
+    }
+    .notice p { font-size: 15.5px; color: var(--accent); margin: 0; font-style: italic; }
+
+    /* ── DIVIDER ── */
+    hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    /* ── SIGNATURE BLOCK ── */
+    .sig-block { padding-top: 36px; border-top: 2px solid var(--ink); }
+    .sig-block h2 { font-size: 1.15rem; margin-bottom: 10px; }
+    .sig-block p { font-size: 16px; }
+    .sig-block a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 20px 48px;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--light);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    @media (max-width: 540px) {
+      .page { padding: 48px 24px 72px; }
+      footer { padding: 18px 24px; }
+      .perm-name { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="masthead">
+    <p class="masthead-label">Dokumen Resmi Aplikasi</p>
+    <h1>Kebijakan Privasi<br>Maritim Muda Connect</h1>
+    <p class="masthead-sub">Pernyataan resmi mengenai pengumpulan, penggunaan, dan perlindungan data pengguna.</p>
+  </div>
+
+  <div class="meta-line">
+    <span><strong>Tanggal Berlaku:</strong> 1 April 2025</span>
+    <span><strong>Versi:</strong> 1.0</span>
+    <span><strong>Platform:</strong> Android</span>
+  </div>
+
+  <section>
+    <div class="section-title"><span class="num">1.</span><h2>Pendahuluan</h2></div>
+    <p>
+      Aplikasi <strong>Maritim Muda Connect</strong> ("Aplikasi", "kami") berkomitmen untuk melindungi privasi setiap pengguna. Kebijakan Privasi ini menguraikan secara terperinci jenis data yang dikumpulkan, cara penggunaannya, serta hak-hak yang dimiliki pengguna atas data tersebut.
+    </p>
+    <p>
+      Dengan mengunduh atau menggunakan Aplikasi, pengguna dianggap telah membaca dan menyetujui ketentuan yang tercantum dalam dokumen ini.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">2.</span><h2>Data yang Dikumpulkan</h2></div>
+    <p>Aplikasi dapat mengumpulkan kategori data berikut:</p>
+    <ul class="doc-list">
+      <li><strong>Informasi Akun</strong> — nama, alamat surel, dan data profil yang diberikan pengguna saat pendaftaran.</li>
+      <li><strong>Foto dan Media</strong> — gambar yang diambil atau diunggah melalui fitur yang tersedia dalam Aplikasi.</li>
+      <li><strong>Data Penggunaan</strong> — informasi interaksi pengguna dengan fitur Aplikasi, termasuk frekuensi dan durasi sesi.</li>
+      <li><strong>Informasi Perangkat</strong> — jenis perangkat, versi sistem operasi Android, dan pengenal perangkat anonim.</li>
+    </ul>
+    <div class="notice">
+      <p>Kami tidak mengumpulkan data lokasi pengguna tanpa persetujuan eksplisit, dan tidak menjual data pribadi kepada pihak ketiga dalam bentuk apapun.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">3.</span><h2>Izin Akses Perangkat</h2></div>
+    <p>
+      Aplikasi meminta izin akses berikut pada perangkat Android pengguna. Setiap izin digunakan secara terbatas sesuai fungsinya masing-masing.
+    </p>
+    <table class="perm-table">
+      <thead>
+        <tr>
+          <th>Izin</th>
+          <th>Keperluan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="perm-name">INTERNET</td>
+          <td>Menghubungkan Aplikasi ke server untuk menampilkan konten, sinkronisasi data, dan pembaruan layanan.</td>
+        </tr>
+        <tr>
+          <td class="perm-name">CAMERA</td>
+          <td>Memungkinkan pengguna mengambil foto langsung dari dalam Aplikasi. Kamera hanya aktif atas tindakan eksplisit pengguna.</td>
+        </tr>
+        <tr>
+          <td class="perm-name">READ_EXTERNAL_STORAGE</td>
+          <td>Membaca file atau gambar dari penyimpanan perangkat yang dipilih pengguna untuk diunggah ke dalam Aplikasi.</td>
+        </tr>
+        <tr>
+          <td class="perm-name">WRITE_EXTERNAL_STORAGE</td>
+          <td>Menyimpan file atau gambar hasil unduhan ke penyimpanan lokal perangkat pengguna.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">4.</span><h2>Tujuan Penggunaan Data</h2></div>
+    <p>Data yang dikumpulkan digunakan semata-mata untuk keperluan berikut:</p>
+    <ul class="doc-list">
+      <li>Menyediakan, mengoperasikan, dan meningkatkan layanan Aplikasi.</li>
+      <li>Memproses konten yang diunggah pengguna sesuai fungsi yang diminta.</li>
+      <li>Mengirimkan notifikasi penting terkait perubahan layanan atau kebijakan.</li>
+      <li>Mendeteksi, mencegah, dan menangani penyalahgunaan atau aktivitas tidak sah.</li>
+      <li>Memenuhi kewajiban hukum yang berlaku di wilayah Republik Indonesia.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">5.</span><h2>Pembagian Data kepada Pihak Ketiga</h2></div>
+    <p>
+      Kami tidak memindahtangankan, memperdagangkan, atau mengungkapkan data pribadi pengguna kepada pihak eksternal, kecuali dalam kondisi yang secara terbatas meliputi:
+    </p>
+    <ul class="doc-list">
+      <li><strong>Penyedia layanan teknis</strong> — seperti hosting dan analitik, yang terikat perjanjian kerahasiaan dengan kami.</li>
+      <li><strong>Kepatuhan hukum</strong> — apabila diwajibkan oleh peraturan perundang-undangan atau perintah pengadilan yang berlaku.</li>
+      <li><strong>Perlindungan keamanan</strong> — untuk mencegah penipuan, penyalahgunaan, atau ancaman siber yang membahayakan pengguna.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">6.</span><h2>Keamanan Data</h2></div>
+    <p>
+      Data pengguna disimpan pada infrastruktur yang dilindungi dengan enkripsi standar industri. Kami menerapkan langkah-langkah teknis dan prosedural yang wajar guna mencegah akses, pengungkapan, atau perubahan data yang tidak sah.
+    </p>
+    <p>
+      Foto dan media yang diunggah hanya disimpan selama diperlukan untuk keperluan layanan dan akan dihapus secara berkala sesuai kebijakan retensi data internal kami.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">7.</span><h2>Hak Pengguna atas Data Pribadi</h2></div>
+    <p>Pengguna berhak atas data pribadinya, yang mencakup:</p>
+    <ul class="doc-list">
+      <li><strong>Hak Akses</strong> — meminta salinan data pribadi yang tersimpan di sistem kami.</li>
+      <li><strong>Hak Koreksi</strong> — memperbarui data yang tidak akurat atau tidak lengkap.</li>
+      <li><strong>Hak Penghapusan</strong> — meminta penghapusan akun beserta seluruh data terkait.</li>
+      <li><strong>Pencabutan Izin</strong> — mencabut izin akses kamera atau penyimpanan kapan saja melalui menu Pengaturan perangkat Android.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">8.</span><h2>Privasi Anak di Bawah Umur</h2></div>
+    <p>
+      Aplikasi ini tidak ditujukan untuk pengguna di bawah usia 13 tahun. Kami tidak dengan sengaja mengumpulkan data pribadi dari anak-anak. Apabila diketahui terdapat data dari pengguna di bawah usia tersebut, kami akan segera menghapusnya. Orang tua atau wali yang menyadari hal ini dimohon untuk menghubungi kami.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">9.</span><h2>Perubahan Kebijakan</h2></div>
+    <p>
+      Kami berhak memperbarui Kebijakan Privasi ini sewaktu-waktu. Perubahan yang signifikan akan diberitahukan melalui notifikasi di dalam Aplikasi atau pembaruan pada halaman ini. Penggunaan Aplikasi secara berkelanjutan setelah perubahan tersebut dianggap sebagai penerimaan atas ketentuan yang diperbarui.
+    </p>
+  </section>
+
+  <hr />
+
+  <div class="sig-block">
+    <h2>Hubungi Kami</h2>
+    <p>
+      Untuk pertanyaan, permintaan penghapusan data, atau pelaporan terkait privasi, silakan menghubungi kami melalui surel berikut.
+    </p>
+    <p style="margin-top: 16px;">
+      <strong>Maritim Muda Connect</strong><br />
+      Surel: <a href="mailto:privacy@maritimmudaconnect.id">privacy@maritimmudaconnect.id</a>
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <span>&copy; 2025 Maritim Muda Connect. Semua hak dilindungi undang-undang.</span>
+  <span>Versi Dokumen 1.0 &mdash; April 2025</span>
+</footer>
+
+</body>
+</html>
