@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Penghapusan Akun — Maritim Muda Connect</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #1a1a1a;
+      --mid:    #555;
+      --light:  #888;
+      --bg:     #faf9f7;
+      --white:  #ffffff;
+      --border: #e2ddd6;
+      --accent: #1c3a5e;
+      --red:    #b91c1c;
+      --red-bg: #fff5f5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.8;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 48px 100px;
+      background: var(--white);
+      min-height: 100vh;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+
+    .masthead {
+      padding-bottom: 28px;
+      border-bottom: 2px solid var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .masthead-label {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 14px;
+    }
+
+    .masthead h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    .masthead-sub {
+      margin-top: 12px;
+      font-size: 15.5px;
+      color: var(--mid);
+      font-style: italic;
+    }
+
+    .meta-line {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 52px;
+      font-size: 13px;
+      color: var(--light);
+    }
+    .meta-line span strong { color: var(--mid); font-weight: 500; }
+
+    section { margin-bottom: 42px; }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .section-title .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--light);
+      min-width: 20px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: .01em;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    ul.doc-list { list-style: none; padding: 0; margin: 10px 0; }
+    ul.doc-list li {
+      padding: 4px 0 4px 20px;
+      position: relative;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+    ul.doc-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #bbb;
+    }
+
+    /* STEPS */
+    ol.steps { list-style: none; padding: 0; margin: 18px 0; }
+    ol.steps li {
+      display: flex;
+      gap: 18px;
+      padding-bottom: 24px;
+      position: relative;
+    }
+    ol.steps li:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 14px; top: 32px; bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px; font-weight: 700;
+      position: relative; z-index: 1;
+    }
+    .step-body { padding-top: 4px; }
+    .step-body strong { display: block; font-size: 16px; color: var(--ink); margin-bottom: 3px; }
+    .step-body span { font-size: 15.5px; color: var(--mid); line-height: 1.75; }
+
+    /* TABLE */
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      font-size: 15.5px;
+    }
+    table.data-table thead th {
+      text-align: left;
+      font-family: 'EB Garamond', serif;
+      font-size: 11.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--light);
+      padding: 0 12px 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-weight: 400;
+    }
+    table.data-table tbody td {
+      padding: 13px 12px 13px 0;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.7;
+    }
+    table.data-table tbody tr:last-child td { border-bottom: none; }
+    .data-name {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 600;
+      white-space: nowrap;
+      padding-right: 24px;
+    }
+
+    /* NOTICE / WARNING */
+    .warning {
+      border-left: 3px solid var(--red);
+      padding: 12px 20px;
+      margin: 18px 0;
+      background: var(--red-bg);
+    }
+    .warning p { font-size: 15.5px; color: var(--red); margin: 0; }
+
+    .notice {
+      border-left: 3px solid var(--accent);
+      padding: 12px 20px;
+      margin: 18px 0;
+      background: #f2f5f9;
+    }
+    .notice p { font-size: 15.5px; color: var(--accent); margin: 0; font-style: italic; }
+
+    /* CTA */
+    .cta-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 28px;
+      background: var(--accent);
+      color: white;
+      font-family: 'EB Garamond', serif;
+      font-size: 16px;
+      text-decoration: none;
+      letter-spacing: .02em;
+      transition: background 0.2s;
+    }
+    .cta-link:hover { background: #142b47; }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    .sig-block { padding-top: 36px; border-top: 2px solid var(--ink); }
+    .sig-block h2 { font-size: 1.15rem; margin-bottom: 10px; }
+    .sig-block p { font-size: 16px; }
+    .sig-block a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+    footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 20px 48px;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--light);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    @media (max-width: 540px) {
+      .page { padding: 48px 24px 72px; }
+      footer { padding: 18px 24px; }
+      .data-name { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="masthead">
+    <p class="masthead-label">Dokumen Resmi Aplikasi</p>
+    <h1>Penghapusan Akun<br>Maritim Muda Connect</h1>
+    <p class="masthead-sub">Panduan resmi mekanisme penghapusan akun dan data pengguna aplikasi Maritim Muda Connect.</p>
+  </div>
+
+  <div class="meta-line">
+    <span><strong>Berlaku sejak:</strong> 1 April 2025</span>
+    <span><strong>Versi:</strong> 1.0</span>
+    <span><strong>Platform:</strong> Android</span>
+  </div>
+
+  <div class="warning">
+    <p>⚠ Penghapusan akun bersifat <strong>permanen dan tidak dapat dibatalkan</strong>. Seluruh data yang terkait dengan akun Anda akan dihapus setelah proses selesai dijalankan.</p>
+  </div>
+
+  <section>
+    <div class="section-title"><span class="num">1.</span><h2>Tentang Aplikasi Ini</h2></div>
+    <p>
+      <strong>Maritim Muda Connect</strong> adalah aplikasi resmi yang dikembangkan oleh <strong>Maritim Muda Nusantara</strong> sebagai platform digital jejaring nasional pemuda bidang kemaritiman pertama di Indonesia. Aplikasi ini tersedia di platform Android melalui Google Play Store.
+    </p>
+    <p>
+      Dokumen ini menjelaskan mekanisme penghapusan akun pengguna beserta data yang akan dihapus, sesuai ketentuan kebijakan Google Play Store.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">2.</span><h2>Data yang Akan Dihapus</h2></div>
+    <p>Apabila pengguna mengajukan penghapusan akun, seluruh data berikut akan dihapus secara permanen dari sistem kami:</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Jenis Data</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="data-name">Nama Lengkap</td>
+          <td>Nama yang didaftarkan saat proses registrasi akun.</td>
+        </tr>
+        <tr>
+          <td class="data-name">Alamat Email</td>
+          <td>Surel yang digunakan sebagai identitas login pengguna.</td>
+        </tr>
+        <tr>
+          <td class="data-name">Jenis Kelamin</td>
+          <td>Data demografi yang diisi saat registrasi.</td>
+        </tr>
+        <tr>
+          <td class="data-name">Provinsi</td>
+          <td>Domisili pengguna yang diisi saat registrasi.</td>
+        </tr>
+        <tr>
+          <td class="data-name">Kata Sandi</td>
+          <td>Kata sandi akun dalam bentuk yang telah dienkripsi.</td>
+        </tr>
+        <tr>
+          <td class="data-name">Foto &amp; Media</td>
+          <td>Foto profil dan seluruh media yang diunggah oleh pengguna.</td>
+        </tr>
+        <tr>
+          <td class="data-name">Data KTP</td>
+          <td>Nomor dan dokumen KTP yang diunggah saat proses verifikasi identitas.</td>
+        </tr>
+        <tr>
+          <td class="data-name">Riwayat Aktivitas</td>
+          <td>Seluruh rekam jejak aktivitas dan interaksi pengguna di dalam platform.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="notice">
+      <p>Kami tidak menyimpan data apapun setelah proses penghapusan selesai. Tidak ada data yang dipertahankan untuk keperluan komersial.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">3.</span><h2>Waktu Pemrosesan</h2></div>
+    <p>
+      Setelah permintaan penghapusan dikonfirmasi, akun akan segera <strong>dinonaktifkan</strong> dan seluruh data akan dihapus secara permanen dalam waktu <strong>paling lama 5 (lima) hari kerja</strong>.
+    </p>
+    <p>
+      Selama periode pemrosesan, akun tidak dapat diakses. Apabila ada pertanyaan terkait status penghapusan, pengguna dapat menghubungi kami melalui kontak yang tercantum di bagian bawah dokumen ini.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">4.</span><h2>Cara Mengajukan Penghapusan Akun</h2></div>
+    <p>Penghapusan akun dapat dilakukan melalui situs web resmi Maritim Muda Hub dengan mengikuti langkah-langkah berikut:</p>
+
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Buka Situs Web Maritim Muda Hub</strong>
+          <span>Akses <a href="https://hub.maritimmuda.id" style="color:var(--accent);">hub.maritimmuda.id</a> melalui browser dan masuk menggunakan akun Anda.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Masuk ke Halaman Profil</strong>
+          <span>Kunjungi halaman <em>Profile → General</em> atau langsung akses <a href="https://hub.maritimmuda.id/profile/general" style="color:var(--accent);">hub.maritimmuda.id/profile/general</a>, kemudian gulir ke bagian paling bawah untuk menemukan seksi <em>"Hapus Akun".</em></span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Isi Alasan dan Konfirmasi Kata Sandi</strong>
+          <span>Masukkan alasan penghapusan (bersifat opsional) dan konfirmasi kata sandi Anda untuk memverifikasi identitas.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Klik "Ajukan Penghapusan Akun"</strong>
+          <span>Tekan tombol tersebut. Sebuah dialog konfirmasi akan muncul untuk memastikan keputusan Anda.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Ketik "DELETE" sebagai Konfirmasi Final</strong>
+          <span>Pada dialog konfirmasi, ketik kata <strong>DELETE</strong> di kolom yang tersedia, lalu klik <em>"Ya, Hapus Akun"</em> untuk menyelesaikan pengajuan.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <strong>Pengajuan Berhasil Dikirim</strong>
+          <span>Akun akan segera dinonaktifkan dan permintaan akan diproses dalam maksimal 5 hari kerja. Notifikasi konfirmasi akan ditampilkan setelah pengajuan berhasil dikirim.</span>
+        </div>
+      </li>
+    </ol>
+
+    <a href="https://hub.maritimmuda.id/profile/general" class="cta-link" target="_blank">Ajukan Penghapusan Akun →</a>
+  </section>
+
+  <hr />
+
+  <div class="sig-block">
+    <h2>Hubungi Kami</h2>
+    <p>
+      Untuk pertanyaan terkait proses penghapusan akun atau status pemrosesan data, silakan menghubungi kami.
+    </p>
+    <p style="margin-top: 16px;">
+      <strong>Maritim Muda Nusantara</strong><br />
+      Surel: <a href="mailto:admin@maritimmuda.id">admin@maritimmuda.id</a>
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <span>&copy; 2026 Maritim Muda Nusantara. Semua hak dilindungi undang-undang.</span>
+  <span>Maritim Muda Hub v3.0 &mdash; April 2025</span>
+</footer>
+
+</body>
+</html>
