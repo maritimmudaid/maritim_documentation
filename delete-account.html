@@ -127,6 +127,65 @@
       color: #bbb;
     }
 
+    /* CHANNEL TOGGLE */
+    .channel-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 28px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .channel-tab {
+      flex: 1;
+      padding: 10px 20px;
+      background: transparent;
+      border: none;
+      cursor: default;
+      font-family: 'EB Garamond', serif;
+      font-size: 15px;
+      color: var(--light);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .channel-tab .tab-icon { font-size: 16px; }
+    .channel-tab.active {
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+    }
+    .channel-tab:not(:last-child) {
+      border-right: 1px solid var(--border);
+    }
+
+    /* SUB-SECTION LABEL */
+    .sub-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      width: 100%;
+    }
+    .sub-label .pill {
+      background: var(--accent);
+      color: white;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .sub-label .pill.mobile { background: #0e7490; }
+
     /* STEPS */
     ol.steps { list-style: none; padding: 0; margin: 18px 0; }
     ol.steps li {
@@ -153,9 +212,43 @@
       font-size: 14px; font-weight: 700;
       position: relative; z-index: 1;
     }
+    .step-num.mobile { background: #0e7490; }
     .step-body { padding-top: 4px; }
     .step-body strong { display: block; font-size: 16px; color: var(--ink); margin-bottom: 3px; }
     .step-body span { font-size: 15.5px; color: var(--mid); line-height: 1.75; }
+
+    /* INLINE STEP BADGE (for dialog popups) */
+    .step-badge {
+      display: inline-block;
+      font-size: 11px;
+      background: #f0f4f8;
+      color: var(--accent);
+      border: 1px solid #c8d8ea;
+      border-radius: 4px;
+      padding: 1px 7px;
+      letter-spacing: .04em;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+
+    /* DIVIDER between mobile & web blocks */
+    .method-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 36px 0 28px;
+      color: var(--light);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .method-divider::before,
+    .method-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
 
     /* TABLE */
     table.data-table {
@@ -343,7 +436,80 @@
 
   <section>
     <div class="section-title"><span class="num">4.</span><h2>Cara Mengajukan Penghapusan Akun</h2></div>
-    <p>Penghapusan akun dapat dilakukan melalui situs web resmi Maritim Muda Hub dengan mengikuti langkah-langkah berikut:</p>
+    <p>Penghapusan akun dapat dilakukan melalui dua cara: langsung dari <strong>aplikasi mobile</strong> atau melalui <strong>situs web</strong> Maritim Muda Hub.</p>
+
+    <div class="channel-tabs">
+      <div class="channel-tab active"><span class="tab-icon">📱</span> Aplikasi Mobile</div>
+      <div class="channel-tab"><span class="tab-icon">🖥</span> Situs Web</div>
+    </div>
+
+    <!-- MOBILE FLOW -->
+    <div class="sub-label">
+      <span class="pill mobile">Mobile</span>
+      Melalui Aplikasi Maritim Muda Connect (Android)
+    </div>
+
+    <ol class="steps">
+      <li>
+        <div class="step-num mobile">1</div>
+        <div class="step-body">
+          <strong>Buka Halaman Profile</strong>
+          <span>Di navigasi bawah aplikasi, ketuk tab <em>Profile</em> (ikon orang di pojok kanan bawah).</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num mobile">2</div>
+        <div class="step-body">
+          <strong>Masuk ke Tab General</strong>
+          <span>Di halaman Profile, pilih tab atau menu <em>General</em> untuk mengakses pengaturan umum akun.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num mobile">3</div>
+        <div class="step-body">
+          <strong>Gulir ke Bagian Delete Account</strong>
+          <span>Gulir ke paling bawah halaman hingga menemukan seksi berlabel <em>"Delete Account"</em> berwarna merah.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num mobile">4</div>
+        <div class="step-body">
+          <strong>Isi Alasan dan Konfirmasi Kata Sandi</strong>
+          <span>Masukkan alasan penghapusan (bersifat opsional) pada kolom <em>Reason</em>, lalu isi kolom <em>Confirm Password</em> dengan kata sandi akun Anda saat ini.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num mobile">5</div>
+        <div class="step-body">
+          <strong>Ketuk "Request Account Deletion"</strong>
+          <span>Tekan tombol tersebut. Sebuah dialog konfirmasi <span class="step-badge">Confirm Deletion</span> akan muncul untuk memastikan keputusan Anda.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num mobile">6</div>
+        <div class="step-body">
+          <strong>Ketik "DELETE" sebagai Konfirmasi Final</strong>
+          <span>Pada dialog konfirmasi, ketik kata <strong>DELETE</strong> di kolom yang tersedia, lalu ketuk <em>"Delete"</em> untuk melanjutkan. Tindakan ini bersifat irreversibel.</span>
+        </div>
+      </li>
+      <li>
+        <div class="step-num mobile">7</div>
+        <div class="step-body">
+          <strong>Pengajuan Berhasil Dikirim</strong>
+          <span>Dialog <span class="step-badge">Request Received</span> akan muncul, mengonfirmasi bahwa permintaan penghapusan akun Anda telah diterima dan akan diproses dalam maksimal <strong>5 hari kerja</strong>. Ketuk <em>"Understood"</em> untuk menutup dialog.</span>
+        </div>
+      </li>
+    </ol>
+
+    <div class="method-divider">atau melalui situs web</div>
+
+    <!-- WEB FLOW -->
+    <div class="sub-label">
+      <span class="pill">Web</span>
+      Melalui Situs Web Maritim Muda Hub
+    </div>
+
+    <p>Penghapusan akun juga dapat dilakukan melalui situs web resmi Maritim Muda Hub dengan mengikuti langkah-langkah berikut:</p>
 
     <ol class="steps">
       <li>
@@ -390,7 +556,7 @@
       </li>
     </ol>
 
-    <a href="https://hub.maritimmuda.id/profile/general" class="cta-link" target="_blank">Ajukan Penghapusan Akun →</a>
+    <a href="https://hub.maritimmuda.id/profile/general" class="cta-link" target="_blank">Ajukan Penghapusan Akun via Web →</a>
   </section>
 
   <hr />
