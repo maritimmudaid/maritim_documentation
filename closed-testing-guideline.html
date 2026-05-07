@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panduan Closed Testing — Maritim Muda Connect</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #1a1a1a;
+      --mid:    #555;
+      --light:  #888;
+      --bg:     #faf9f7;
+      --white:  #ffffff;
+      --border: #e2ddd6;
+      --accent: #1c3a5e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.8;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 48px 100px;
+      background: var(--white);
+      min-height: 100vh;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+
+    .masthead {
+      padding-bottom: 28px;
+      border-bottom: 2px solid var(--ink);
+      margin-bottom: 10px;
+    }
+    .masthead-label {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 14px;
+    }
+    .masthead h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+    .masthead-sub {
+      margin-top: 12px;
+      font-size: 15.5px;
+      color: var(--mid);
+      font-style: italic;
+    }
+
+    .meta-line {
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 52px;
+      font-size: 13px;
+      color: var(--light);
+    }
+    .meta-line span strong { color: var(--mid); font-weight: 500; }
+
+    section { margin-bottom: 42px; }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .section-title .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--light);
+      min-width: 20px;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: .01em;
+    }
+    p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    ul.doc-list { list-style: none; padding: 0; margin: 10px 0; }
+    ul.doc-list li {
+      padding: 4px 0 4px 20px;
+      position: relative;
+      font-size: 17px;
+      line-height: 1.85;
+    }
+    ul.doc-list li::before { content: '—'; position: absolute; left: 0; color: #bbb; }
+
+    ol.step-list { list-style: none; padding: 0; margin: 10px 0; counter-reset: step-counter; }
+    ol.step-list li {
+      counter-increment: step-counter;
+      padding: 14px 0 14px 52px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.75;
+    }
+    ol.step-list li:last-child { border-bottom: none; }
+    ol.step-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0; top: 14px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      opacity: .35;
+      line-height: 1;
+      width: 32px;
+      text-align: right;
+    }
+    ol.step-list li strong { display: block; font-size: 16.5px; color: var(--accent); margin-bottom: 4px; }
+    ol.step-list li span { font-size: 15.5px; color: var(--mid); }
+
+    table.scenario-table { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 15.5px; }
+    table.scenario-table thead th {
+      text-align: left;
+      font-family: 'EB Garamond', serif;
+      font-size: 11.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--light);
+      padding: 0 12px 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-weight: 400;
+    }
+    table.scenario-table tbody td {
+      padding: 13px 12px 13px 0;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.7;
+    }
+    table.scenario-table tbody tr:last-child td { border-bottom: none; }
+    .scenario-id {
+      font-size: 12px; color: var(--light); font-weight: 600;
+      letter-spacing: .08em; white-space: nowrap; padding-right: 20px;
+    }
+    .scenario-label { font-size: 15px; color: var(--accent); font-weight: 600; display: block; margin-bottom: 3px; }
+
+    .notice {
+      border-left: 3px solid var(--accent);
+      padding: 12px 20px; margin: 18px 0; background: #f2f5f9;
+    }
+    .notice p { font-size: 15.5px; color: var(--accent); margin: 0; font-style: italic; }
+
+    .callout { border: 1px solid var(--border); padding: 20px 24px; margin: 18px 0; background: var(--bg); }
+    .callout-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-weight: 700; color: var(--ink);
+      margin-bottom: 10px; letter-spacing: .02em;
+    }
+    .callout p { font-size: 15.5px; color: var(--mid); margin-bottom: 8px; }
+    .callout p:last-child { margin-bottom: 0; }
+    .callout a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+    .timeline { margin: 18px 0; }
+    .timeline-item {
+      display: flex; gap: 20px; padding: 14px 0;
+      border-bottom: 1px solid var(--border); align-items: flex-start;
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-date {
+      min-width: 100px; font-size: 12px; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--light); padding-top: 3px;
+    }
+    .timeline-content strong { display: block; font-size: 16px; color: var(--ink); margin-bottom: 2px; }
+    .timeline-content span { font-size: 15px; color: var(--mid); }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    .sig-block { padding-top: 36px; border-top: 2px solid var(--ink); }
+    .sig-block h2 { font-size: 1.15rem; margin-bottom: 10px; }
+    .sig-block p { font-size: 16px; }
+    .sig-block a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+    footer {
+      max-width: 720px; margin: 0 auto;
+      padding: 20px 48px;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      font-size: 12px; color: var(--light);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    }
+
+    code {
+      background: #f2f5f9; padding: 3px 8px;
+      font-size: 14px; color: var(--accent); font-family: monospace;
+    }
+
+    @media (max-width: 540px) {
+      .page { padding: 48px 24px 72px; }
+      footer { padding: 18px 24px; }
+      .timeline-date { min-width: 72px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="masthead">
+    <p class="masthead-label">Dokumen Internal — Program Uji Coba</p>
+    <h1>Panduan Closed Testing<br>Maritim Muda Connect</h1>
+    <p class="masthead-sub">Panduan lengkap bagi peserta uji coba tertutup — mulai dari cara bergabung, skenario pengujian, hingga mekanisme pengiriman umpan balik.</p>
+  </div>
+
+  <div class="meta-line">
+    <span><strong>Program:</strong> Closed Testing Alpha</span>
+    <span><strong>Durasi:</strong> Min. 14 hari</span>
+    <span><strong>Platform:</strong> Android</span>
+    <span><strong>Versi:</strong> 1.0</span>
+  </div>
+
+  <section>
+    <div class="section-title"><span class="num">1.</span><h2>Apa Itu Closed Testing?</h2></div>
+    <p>
+      Closed Testing adalah program uji coba terbatas di mana aplikasi <strong>Maritim Muda Connect</strong> dibuka hanya untuk kelompok pengguna terpilih sebelum diluncurkan secara publik ke Google Play Store. Tujuannya adalah mendapatkan umpan balik nyata dari pengguna dalam kondisi penggunaan sehari-hari.
+    </p>
+    <p>
+      Sebagai peserta, kamu berperan penting dalam membentuk kualitas akhir aplikasi. Pengalaman dan temuan yang kamu sampaikan akan langsung memengaruhi perbaikan dan pengembangan fitur sebelum rilis resmi.
+    </p>
+    <div class="notice">
+      <p>Partisipasi dalam program ini bersifat sukarela dan tidak dipungut biaya apapun. Kamu dapat berhenti berpartisipasi kapan saja.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">2.</span><h2>Cara Bergabung sebagai Tester</h2></div>
+    <p>Ikuti langkah-langkah berikut untuk mulai mengakses aplikasi sebagai tester resmi:</p>
+    <ol class="step-list">
+      <li>
+        <strong>Terima undangan melalui surel</strong>
+        <span>Kamu akan menerima surel undangan dari tim Maritim Muda Connect berisi tautan opt-in ke program closed testing Google Play. Pastikan surel Google yang kamu gunakan sudah terdaftar dan aktif.</span>
+      </li>
+      <li>
+        <strong>Buka tautan opt-in dan bergabung</strong>
+        <span>Klik tautan dalam surel, lalu pilih <em>"Become a tester"</em> pada halaman yang terbuka. Kamu hanya perlu melakukan ini satu kali.</span>
+      </li>
+      <li>
+        <strong>Unduh aplikasi dari Google Play</strong>
+        <span>Setelah bergabung, buka Google Play Store dan cari <em>"Maritim Muda Connect"</em>, atau gunakan tautan langsung yang disertakan dalam surel. Kamu akan melihat label <em>"Early access"</em> pada halaman aplikasi.</span>
+      </li>
+      <li>
+        <strong>Instal dan masuk ke aplikasi</strong>
+        <span>Instal aplikasi seperti biasa, lalu buat akun atau masuk menggunakan akun yang sudah ada. Tidak diperlukan kode khusus untuk mengaktifkan akses tester.</span>
+      </li>
+      <li>
+        <strong>Mulai menjelajahi aplikasi</strong>
+        <span>Gunakan aplikasi secara normal selama minimal 14 hari. Catat hal yang membingungkan, tidak berfungsi sebagaimana mestinya, atau justru bekerja dengan sangat baik.</span>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">3.</span><h2>Yang Perlu Dilakukan Selama Testing</h2></div>
+    <p>
+      Tidak ada cara yang "salah" dalam menggunakan aplikasi selama uji coba ini. Namun, ada beberapa area yang kami harap kamu perhatikan secara khusus:
+    </p>
+    <table class="scenario-table">
+      <thead>
+        <tr><th>ID</th><th>Skenario Pengujian</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="scenario-id">T-01</td>
+          <td>
+            <span class="scenario-label">Onboarding &amp; Registrasi</span>
+            Coba buat akun baru dari awal. Apakah proses pendaftaran mudah diikuti? Apakah ada langkah yang membingungkan atau terasa berlebihan?
+          </td>
+        </tr>
+        <tr>
+          <td class="scenario-id">T-02</td>
+          <td>
+            <span class="scenario-label">Navigasi Utama</span>
+            Jelajahi seluruh menu dan fitur utama. Apakah kamu bisa menemukan fitur yang dicari dengan mudah? Apakah ada menu yang labelnya tidak jelas?
+          </td>
+        </tr>
+        <tr>
+          <td class="scenario-id">T-03</td>
+          <td>
+            <span class="scenario-label">Unggah Konten &amp; Media</span>
+            Coba unggah foto atau konten dari perangkatmu. Apakah prosesnya lancar? Apakah ada pesan error yang tidak informatif?
+          </td>
+        </tr>
+        <tr>
+          <td class="scenario-id">T-04</td>
+          <td>
+            <span class="scenario-label">Interaksi Komunitas</span>
+            Gunakan fitur komunitas dalam aplikasi. Apakah interaksi antarpengguna terasa natural dan mudah digunakan?
+          </td>
+        </tr>
+        <tr>
+          <td class="scenario-id">T-05</td>
+          <td>
+            <span class="scenario-label">Performa &amp; Stabilitas</span>
+            Perhatikan apakah aplikasi terasa lambat, mengalami crash, atau konsumsi baterai terasa tidak wajar saat digunakan.
+          </td>
+        </tr>
+        <tr>
+          <td class="scenario-id">T-06</td>
+          <td>
+            <span class="scenario-label">Pengaturan Akun</span>
+            Coba ubah data profil, pengaturan notifikasi, dan preferensi lainnya. Apakah perubahan tersimpan dengan benar?
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="notice">
+      <p>Tidak semua skenario harus diselesaikan dalam satu sesi. Gunakan aplikasi sesuai kebiasaanmu, dan catat temuan yang muncul secara alami.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">4.</span><h2>Mekanisme Pengumpulan Umpan Balik</h2></div>
+    <p>
+      Kami menyediakan tiga saluran umpan balik, tergantung jenis dan urgensi temuanmu:
+    </p>
+
+    <div class="callout">
+      <p class="callout-title">① Ulasan di Google Play Store <em style="font-size:13px;color:var(--light);font-weight:400;">(Utama)</em></p>
+      <p>Sampaikan kesan umum pengalamanmu melalui fitur ulasan di halaman aplikasi pada Google Play Store. Ulasan ini langsung terbaca oleh tim kami. Kamu bisa memperbarui ulasan kapan saja selama program berlangsung.</p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-title">② Formulir Umpan Balik Mingguan <em style="font-size:13px;color:var(--light);font-weight:400;">(Setiap 7 hari)</em></p>
+      <p>Setiap minggu, kamu akan menerima tautan ke formulir umpan balik singkat melalui surel terdaftar. Formulir ini memuat pertanyaan spesifik tentang fitur yang ingin kami evaluasi lebih dalam.</p>
+      <p>Estimasi waktu pengisian: <strong>5–10 menit.</strong></p>
+    </div>
+
+    <div class="callout">
+      <p class="callout-title">③ Pelaporan Bug Langsung <em style="font-size:13px;color:var(--light);font-weight:400;">(Segera, jika ditemukan)</em></p>
+      <p>Jika kamu menemukan bug, crash, atau error, laporkan melalui surel dengan menyertakan: deskripsi singkat masalah, langkah untuk mereproduksi, screenshot jika ada, serta tipe perangkat dan versi Android yang digunakan.</p>
+      <p>Surel: <a href="mailto:beta@maritimmudaconnect.id">beta@maritimmudaconnect.id</a></p>
+    </div>
+
+    <p style="margin-top:8px;">Gunakan format subjek surel berikut agar laporan lebih mudah ditangani:</p>
+    <p><code>[BUG] Nama fitur — deskripsi singkat masalah</code></p>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">5.</span><h2>Timeline Program</h2></div>
+    <p>
+      Closed testing berlangsung setidaknya 14 hari sesuai persyaratan Google Play untuk pengajuan akses produksi. Berikut gambaran umum alurnya:
+    </p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">Hari 1</div>
+        <div class="timeline-content">
+          <strong>Mulai — Instal &amp; Eksplorasi Bebas</strong>
+          <span>Instal aplikasi, buat akun, dan jelajahi secara bebas tanpa panduan. Rekam kesan pertamamu.</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Hari 2–7</div>
+        <div class="timeline-content">
+          <strong>Pengujian Skenario Utama</strong>
+          <span>Gunakan aplikasi sehari-hari. Coba skenario T-01 hingga T-06 secara bertahap. Kirimkan laporan bug jika ditemukan.</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Hari 7</div>
+        <div class="timeline-content">
+          <strong>Formulir Mingguan Pertama</strong>
+          <span>Isi formulir umpan balik yang dikirimkan melalui surel. Sampaikan kesan umum di minggu pertama.</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Hari 8–13</div>
+        <div class="timeline-content">
+          <strong>Pengujian Lanjutan</strong>
+          <span>Lanjutkan eksplorasi fitur yang belum sempat dicoba. Fokus pada skenario yang paling relevan dengan kebiasaanmu.</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Hari 14</div>
+        <div class="timeline-content">
+          <strong>Formulir Penutup &amp; Ulasan Play Store</strong>
+          <span>Isi formulir akhir dan tinggalkan ulasan di Google Play Store. Ini adalah kontribusi terpenting yang bisa kamu berikan.</span>
+        </div>
+      </div>
+    </div>
+    <div class="notice">
+      <p>Program dapat diperpanjang jika masih terdapat pembaruan yang memerlukan evaluasi. Kamu akan diberitahu melalui surel jika ada perpanjangan.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">6.</span><h2>Syarat dan Ketentuan Peserta</h2></div>
+    <p>Dengan berpartisipasi dalam program ini, kamu menyetujui hal-hal berikut:</p>
+    <ul class="doc-list">
+      <li><strong>Kerahasiaan</strong> — Fitur, tampilan, dan konten dalam versi testing ini bersifat rahasia dan tidak untuk dibagikan ke publik atau media sosial sebelum rilis resmi.</li>
+      <li><strong>Perangkat pribadi</strong> — Kamu menggunakan perangkat Android milikmu sendiri dengan versi minimal Android 8.0 (Oreo).</li>
+      <li><strong>Akun Google aktif</strong> — Akun Google yang digunakan untuk bergabung harus aktif dan merupakan akunmu sendiri.</li>
+      <li><strong>Umpan balik jujur</strong> — Kami lebih menghargai kritik membangun daripada pujian semata. Sampaikan pengalaman sebenarnya.</li>
+      <li><strong>Tidak untuk penggunaan komersial</strong> — Akses tester tidak boleh digunakan untuk keperluan komersial atau dioperasikan oleh pihak lain.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-title"><span class="num">7.</span><h2>Pertanyaan yang Sering Diajukan</h2></div>
+
+    <p><strong>Apakah data saya di versi testing akan tetap tersimpan setelah rilis resmi?</strong><br>
+    Ya, akun dan data yang kamu buat selama testing akan tetap dapat digunakan setelah aplikasi rilis secara publik.</p>
+
+    <p><strong>Bagaimana jika aplikasi tidak muncul di Play Store setelah opt-in?</strong><br>
+    Tunggu 15–30 menit, lalu buka kembali Play Store menggunakan akun Google yang sama. Jika masih tidak muncul, hubungi kami melalui surel.</p>
+
+    <p><strong>Apakah saya perlu mengunduh ulang aplikasi setiap ada pembaruan?</strong><br>
+    Tidak. Pembaruan tersedia otomatis melalui Play Store. Aktifkan pembaruan otomatis untuk memastikan kamu selalu menggunakan versi terbaru.</p>
+
+    <p><strong>Apakah ada insentif untuk peserta?</strong><br>
+    Saat ini tidak ada kompensasi finansial. Namun, tester aktif akan mendapat akses early adopter dan pengakuan khusus di komunitas resmi Maritim Muda Connect saat aplikasi diluncurkan.</p>
+
+    <p><strong>Bagaimana cara keluar dari program testing?</strong><br>
+    Buka tautan opt-in yang sama dari surel undangan, lalu pilih <em>"Leave the program"</em>. Setelah itu kamu bisa menghapus instalasi kapan saja.</p>
+  </section>
+
+  <hr />
+
+  <div class="sig-block">
+    <h2>Hubungi Tim Testing</h2>
+    <p>Ada pertanyaan yang tidak terjawab, atau mengalami kendala dalam proses bergabung? Tim kami siap membantu.</p>
+    <p style="margin-top:16px;">
+      <strong>Maritim Muda Connect</strong> — Tim Pengembangan<br />
+      Surel: <a href="mailto:beta@maritimmudaconnect.id">beta@maritimmudaconnect.id</a>
+    </p>
+    <p style="margin-top:12px; font-size:15px; color:var(--mid); font-style:italic;">
+      Kami membaca setiap umpan balik yang masuk. Terima kasih telah meluangkan waktu untuk membantu menjadikan Maritim Muda Connect lebih baik.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <span>&copy; 2025 Maritim Muda Connect. Semua hak dilindungi undang-undang.</span>
+  <span>Panduan Closed Testing v1.0 &mdash; Mei 2025</span>
+</footer>
+
+</body>
+</html>
