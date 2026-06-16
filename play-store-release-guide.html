@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panduan Rilis Play Store — Maritim Muda Connect</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #ffffff;
+      color: #1a1a1a;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 64px 40px 96px;
+    }
+
+    /* Eyebrow */
+    .eyebrow {
+      font-family: 'Arial', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    /* Title */
+    h1 {
+      font-family: 'Georgia', serif;
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.15;
+      color: #111;
+      margin-bottom: 24px;
+    }
+
+    .subtitle {
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 32px;
+    }
+
+    /* Meta bar */
+    .meta-bar {
+      border-top: 1.5px solid #111;
+      border-bottom: 1px solid #ccc;
+      padding: 14px 0;
+      display: flex;
+      gap: 40px;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 56px;
+    }
+
+    .meta-bar span strong {
+      font-weight: 700;
+    }
+
+    .meta-bar .accent {
+      color: #1a5fa8;
+    }
+
+    /* Divider */
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 48px 0;
+    }
+
+    /* Section headings */
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .section-num {
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      color: #999;
+      padding-top: 6px;
+      min-width: 20px;
+    }
+
+    h2 {
+      font-family: 'Georgia', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #1a5fa8;
+      line-height: 1.3;
+    }
+
+    h3 {
+      font-family: 'Georgia', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: #222;
+      margin: 28px 0 10px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: #222;
+    }
+
+    /* Step list */
+    .step-list {
+      list-style: none;
+      margin: 16px 0;
+      counter-reset: step-counter;
+    }
+
+    .step-list li {
+      counter-increment: step-counter;
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+
+    .step-list li::before {
+      content: counter(step-counter) ".";
+      font-family: 'Arial', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #1a5fa8;
+      min-width: 22px;
+      padding-top: 1px;
+    }
+
+    .step-list li > div {
+      flex: 1;
+    }
+
+    .step-list li strong {
+      display: block;
+      font-family: 'Georgia', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 4px;
+    }
+
+    .step-list li p {
+      font-size: 16px;
+      color: #444;
+      margin: 0;
+    }
+
+    /* Bullet list */
+    .bullet-list {
+      list-style: none;
+      margin: 12px 0 16px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 16px;
+      color: #333;
+      align-items: flex-start;
+    }
+
+    .bullet-list li::before {
+      content: "—";
+      color: #999;
+      min-width: 16px;
+    }
+
+    .bullet-list li strong {
+      font-weight: 700;
+      color: #111;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      margin: 20px 0;
+    }
+
+    th {
+      background: #f4f4f2;
+      font-weight: 700;
+      text-align: left;
+      padding: 10px 14px;
+      border: 1px solid #ddd;
+      color: #333;
+    }
+
+    td {
+      padding: 10px 14px;
+      border: 1px solid #e5e5e5;
+      vertical-align: top;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    td:first-child {
+      font-weight: 700;
+      white-space: nowrap;
+      color: #111;
+      width: 200px;
+    }
+
+    tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    /* Phase timeline block */
+    .phase {
+      border-left: 3px solid #1a5fa8;
+      padding: 0 0 28px 24px;
+      position: relative;
+      margin-top: 8px;
+    }
+
+    .phase:last-child {
+      border-left-color: transparent;
+      padding-bottom: 0;
+    }
+
+    .phase::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      top: 6px;
+      width: 11px;
+      height: 11px;
+      background: #1a5fa8;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 1.5px #1a5fa8;
+    }
+
+    .phase:last-child::before {
+      background: #27ae60;
+      box-shadow: 0 0 0 1.5px #27ae60;
+    }
+
+    .phase-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1a5fa8;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .phase:last-child .phase-label {
+      color: #27ae60;
+    }
+
+    .phase h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+
+    .phase p {
+      font-size: 15px;
+      color: #555;
+      margin: 0;
+    }
+
+    /* Notice / callout box */
+    .callout {
+      background: #f0f6ff;
+      border-left: 4px solid #1a5fa8;
+      padding: 14px 18px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .callout p {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      color: #1a3a6a;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .callout-warn {
+      background: #fff8ec;
+      border-left-color: #e67e22;
+    }
+
+    .callout-warn p {
+      color: #7a4a00;
+    }
+
+    /* Code/path style */
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      background: #f3f3f1;
+      border: 1px solid #e0e0dc;
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: #c0392b;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid #ddd;
+      margin-top: 64px;
+      padding-top: 28px;
+    }
+
+    .footer h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .footer p {
+      font-size: 15px;
+      color: #555;
+    }
+
+    .footer a {
+      color: #1a5fa8;
+      text-decoration: none;
+    }
+
+    .copyright {
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 32px;
+      border-top: 1px solid #eee;
+      padding-top: 16px;
+    }
+
+    /* Sub-tag */
+    .tag {
+      display: inline-block;
+      font-family: 'Arial', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #e8f0fb;
+      color: #1a5fa8;
+      padding: 3px 10px;
+      border-radius: 3px;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .page { padding: 36px 20px 64px; }
+      h1 { font-size: 34px; }
+      .meta-bar { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <p class="eyebrow">Dokumen Internal — Manajemen Rilis</p>
+
+    <h1>Panduan Rilis Aplikasi<br>Maritim Muda Connect</h1>
+
+    <p class="subtitle">
+      Panduan lengkap untuk developer dalam merilis, mengelola, dan memperbarui aplikasi Maritim Muda Connect di Google Play Store.
+    </p>
+
+    <div class="meta-bar">
+      <span><strong>Versi:</strong> 1.0</span>
+      <span><strong>Platform:</strong> <span class="accent">Android</span></span>
+      <span><strong>Console:</strong> <span class="accent">Google Play Console</span></span>
+    </div>
+
+    <!-- SECTION 1 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">1.</span>
+        <h2>Pendahuluan</h2>
+      </div>
+
+      <p>
+        Dokumen ini merupakan referensi bagi developer <strong>Maritim Muda Connect</strong> dalam mengelola siklus rilis aplikasi di Google Play Store, yang mencakup tiga fase utama: persiapan dan rilis awal ke produksi, langkah-langkah pasca-rilis, serta prosedur pembaruan versi aplikasi.
+      </p>
+
+      <p>
+        Dokumen ini dibuat dengan asumsi developer telah memiliki akses ke Google Play Console dan aplikasi telah melewati tahap closed testing selama minimal 14 hari sebagaimana disyaratkan oleh Google.
+      </p>
+
+      <div class="callout">
+        <p>
+          <strong>Prasyarat:</strong> Sebelum melanjutkan ke panduan ini, pastikan proses closed testing telah selesai dan aplikasi telah menerima minimal 12 ulasan dari tester aktif. Persyaratan ini wajib dipenuhi sebelum mengajukan akses produksi ke Google Play.
+        </p>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- SECTION 2 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">2.</span>
+        <h2>Gambaran Umum Alur Rilis</h2>
+      </div>
+
+      <p>Secara garis besar, rilis aplikasi ke Play Store mengikuti alur berikut:</p>
+
+      <div class="phase">
+        <p class="phase-label">Tahap 1</p>
+        <h3>Persiapan AAB & Aset</h3>
+        <p>Build AAB production, siapkan screenshots, deskripsi, dan semua aset listing di Play Console.</p>
+      </div>
+
+      <div class="phase">
+        <p class="phase-label">Tahap 2</p>
+        <h3>Pengajuan Production Release</h3>
+        <p>Upload AAB ke track Production, isi release notes, dan kirim ke review Google Play.</p>
+      </div>
+
+      <div class="phase">
+        <p class="phase-label">Tahap 3</p>
+        <h3>Review & Publikasi</h3>
+        <p>Google melakukan review teknis dan kebijakan. Proses biasanya berlangsung 1–3 hari kerja.</p>
+      </div>
+
+      <div class="phase">
+        <p class="phase-label">Tahap 4</p>
+        <h3>Pasca-Rilis</h3>
+        <p>Monitor crash rate, ANR, dan ulasan pengguna. Siapkan patch update jika diperlukan.</p>
+      </div>
+
+      <div class="phase">
+        <p class="phase-label">Selesai ✓</p>
+        <h3>Aplikasi Live di Play Store</h3>
+        <p>Aplikasi dapat diunduh secara publik. Pantau metrik secara rutin melalui Play Console.</p>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- SECTION 3 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">3.</span>
+        <h2>Langkah Rilis ke Production</h2>
+      </div>
+
+      <p>
+        Berikut adalah langkah-langkah teknis untuk merilis aplikasi ke track Production. Ikuti urutan ini secara seksama agar tidak ada langkah yang terlewat.
+      </p>
+
+      <h3>3.1 Persiapan Build</h3>
+
+      <ol class="step-list">
+        <li>
+          <div>
+            <strong>Pastikan versi aplikasi sudah benar</strong>
+            <p>Di file <code>build.gradle</code> (module: app), perbarui <code>versionCode</code> dan <code>versionName</code>. Setiap rilis ke Play Store harus memiliki <code>versionCode</code> yang lebih tinggi dari versi sebelumnya.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Build Android App Bundle (AAB)</strong>
+            <p>Di Android Studio, pilih <strong>Build → Generate Signed Bundle / APK</strong>, kemudian pilih <strong>Android App Bundle</strong>. Gunakan keystore yang sudah ada. Jangan buat keystore baru — keystore yang digunakan harus sama untuk setiap update.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Simpan file AAB dengan aman</strong>
+            <p>Simpan file <code>.aab</code> hasil build beserta keystore dan passwordnya di tempat yang aman. Kehilangan keystore berarti tidak dapat merilis update untuk aplikasi yang sama.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout-warn callout">
+        <p>
+          <strong>Penting:</strong> File keystore (<code>.jks</code> atau <code>.keystore</code>) dan passwordnya harus disimpan di tempat yang aman dan dapat diakses oleh seluruh tim developer inti. Kehilangan keystore mengakibatkan harus membuat listing aplikasi baru dari awal.
+        </p>
+      </div>
+
+      <h3>3.2 Mengisi Informasi Listing di Play Console</h3>
+
+      <p>Masuk ke <strong>play.google.com/console</strong>, buka aplikasi Maritim Muda Connect, kemudian navigasi ke <strong>Store presence → Main store listing</strong>. Pastikan semua kolom berikut sudah terisi dengan benar:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Elemen</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nama Aplikasi</td>
+            <td>Maritim Muda Connect (maks. 30 karakter)</td>
+          </tr>
+          <tr>
+            <td>Deskripsi Singkat</td>
+            <td>Ringkasan aplikasi maksimal 80 karakter</td>
+          </tr>
+          <tr>
+            <td>Deskripsi Panjang</td>
+            <td>Deskripsi lengkap fitur dan manfaat, maksimal 4.000 karakter</td>
+          </tr>
+          <tr>
+            <td>Screenshots</td>
+            <td>Minimal 2 screenshot untuk layar ponsel (resolusi min. 320px, maks. 3840px di sisi terpanjang)</td>
+          </tr>
+          <tr>
+            <td>Ikon Aplikasi</td>
+            <td>PNG 512×512 px, tanpa transparansi berlebihan</td>
+          </tr>
+          <tr>
+            <td>Featured Graphic</td>
+            <td>JPG atau PNG 1024×500 px (opsional tapi direkomendasikan)</td>
+          </tr>
+          <tr>
+            <td>Kategori</td>
+            <td>Pilih kategori yang paling relevan dengan konten aplikasi</td>
+          </tr>
+          <tr>
+            <td>Kebijakan Privasi</td>
+            <td>URL ke halaman privacy policy resmi yang dapat diakses publik</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>3.3 Mengisi Content Rating</h3>
+
+      <ol class="step-list">
+        <li>
+          <div>
+            <strong>Buka menu Content rating</strong>
+            <p>Navigasi ke <strong>Policy → App content → Content rating</strong> di Play Console.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Isi kuesioner IARC</strong>
+            <p>Jawab semua pertanyaan terkait konten aplikasi secara jujur. Sistem akan otomatis menghasilkan rating untuk berbagai wilayah.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Konfirmasi rating</strong>
+            <p>Setelah rating muncul, klik <strong>Apply rating</strong> untuk menyimpan.</p>
+          </div>
+        </li>
+      </ol>
+
+      <h3>3.4 Upload AAB dan Membuat Production Release</h3>
+
+      <ol class="step-list">
+        <li>
+          <div>
+            <strong>Navigasi ke Production track</strong>
+            <p>Di menu kiri, pilih <strong>Release → Production</strong>, kemudian klik tombol <strong>Create new release</strong>.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Upload file AAB</strong>
+            <p>Klik <strong>Upload</strong> dan pilih file <code>.aab</code> yang sudah dibuat. Tunggu hingga proses upload selesai dan Play Console menampilkan informasi versi yang diunggah.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Isi Release notes</strong>
+            <p>Tulis ringkasan perubahan pada versi ini dalam Bahasa Indonesia (dan Bahasa Inggris jika diperlukan). Contoh: <em>"Rilis pertama Maritim Muda Connect. Nikmati fitur profil maritim, unggah sertifikat, dan terhubung dengan komunitas."</em></p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Simpan dan review</strong>
+            <p>Klik <strong>Save</strong>, kemudian <strong>Review release</strong>. Pastikan tidak ada peringatan kritis yang muncul. Peringatan non-kritis umumnya masih bisa diabaikan untuk rilis pertama.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Submit for review</strong>
+            <p>Klik <strong>Start rollout to Production</strong> atau <strong>Send for review</strong> (tergantung status akun). Google akan melakukan review dalam 1–3 hari kerja.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <hr />
+
+    <!-- SECTION 4 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">4.</span>
+        <h2>Langkah Setelah Aplikasi Live</h2>
+      </div>
+
+      <p>
+        Setelah aplikasi berhasil dipublikasikan dan dapat diunduh di Google Play Store, terdapat beberapa langkah penting yang perlu dilakukan agar kualitas dan pertumbuhan aplikasi dapat dijaga.
+      </p>
+
+      <h3>4.1 Pantau Performa Teknis</h3>
+
+      <p>Akses menu <strong>Android vitals</strong> di Play Console untuk memantau tiga indikator utama:</p>
+
+      <ul class="bullet-list">
+        <li><strong>Crash rate</strong> — Persentase sesi yang mengalami crash. Target idealnya di bawah 1%. Apabila angka ini tinggi, segera investigasi dan rilis patch.</li>
+        <li><strong>ANR rate (Application Not Responding)</strong> — Persentase sesi di mana aplikasi tidak merespons selama lebih dari 5 detik. Targetkan di bawah 0.47%.</li>
+        <li><strong>Install base</strong> — Total pengguna aktif yang saat ini menggunakan aplikasi. Pantau tren pertumbuhannya secara mingguan.</li>
+      </ul>
+
+      <h3>4.2 Pantau Ulasan Pengguna</h3>
+
+      <ol class="step-list">
+        <li>
+          <div>
+            <strong>Buka menu Reviews</strong>
+            <p>Navigasi ke <strong>Grow users → Ratings and reviews</strong> untuk melihat semua ulasan yang masuk.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Balas ulasan pengguna</strong>
+            <p>Balas setiap ulasan — baik positif maupun negatif — dalam waktu 48 jam. Respons dari developer meningkatkan kepercayaan calon pengguna baru.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Catat pola feedback</strong>
+            <p>Identifikasi keluhan yang berulang dan jadikan prioritas perbaikan di update berikutnya.</p>
+          </div>
+        </li>
+      </ol>
+
+      <h3>4.3 Verifikasi Tampilan Listing</h3>
+
+      <p>Buka halaman aplikasi di Google Play Store secara langsung (dari perangkat Android atau browser) dan verifikasi hal berikut:</p>
+
+      <ul class="bullet-list">
+        <li>Screenshots tampil dengan benar dan representatif.</li>
+        <li>Deskripsi tidak terpotong dan mudah dibaca.</li>
+        <li>Link kebijakan privasi dapat diakses dan kontennya sesuai.</li>
+        <li>Rating konten (content rating) sesuai dengan target audiens aplikasi.</li>
+      </ul>
+
+      <h3>4.4 Informasikan kepada Pengguna dan Stakeholder</h3>
+
+      <ul class="bullet-list">
+        <li><strong>Bagikan link Play Store</strong> — Distribusikan tautan langsung ke halaman aplikasi kepada komunitas, media sosial, dan mitra terkait.</li>
+        <li><strong>Notifikasi pengguna existing</strong> — Jika sudah ada pengguna dari tahap closed testing, beritahu mereka bahwa aplikasi kini tersedia secara publik.</li>
+        <li><strong>Arsipkan dokumentasi rilis</strong> — Simpan catatan versi, tanggal rilis, dan changelog di repositori internal tim.</li>
+      </ul>
+
+      <div class="callout">
+        <p>
+          <strong>Catatan:</strong> Aplikasi yang baru dirilis mungkin tidak langsung muncul di hasil pencarian Play Store. Proses pengindeksan oleh Google biasanya membutuhkan waktu 24–48 jam setelah status berubah menjadi <em>Published</em>.
+        </p>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- SECTION 5 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">5.</span>
+        <h2>Cara Update Aplikasi di Play Store</h2>
+      </div>
+
+      <p>
+        Setiap kali terdapat perbaikan bug, peningkatan fitur, atau pembaruan tampilan, developer perlu merilis versi baru melalui Play Console. Berikut adalah prosedur standar pembaruan aplikasi.
+      </p>
+
+      <h3>5.1 Perbarui Versi di Kode</h3>
+
+      <ol class="step-list">
+        <li>
+          <div>
+            <strong>Increment versionCode</strong>
+            <p>Buka <code>build.gradle</code> (module: app) dan naikkan nilai <code>versionCode</code> minimal 1 dari versi sebelumnya. Play Store menolak AAB dengan <code>versionCode</code> yang sama atau lebih rendah dari versi yang sudah ada.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Perbarui versionName</strong>
+            <p>Sesuaikan <code>versionName</code> mengikuti konvensi semantik (misalnya dari <code>1.0</code> menjadi <code>1.1</code> untuk update minor, atau <code>2.0</code> untuk update mayor).</p>
+          </div>
+        </li>
+      </ol>
+
+      <h3>5.2 Build AAB Baru</h3>
+
+      <ol class="step-list">
+        <li>
+          <div>
+            <strong>Jalankan build signed AAB</strong>
+            <p>Ikuti proses yang sama seperti pada Bagian 3.1. Gunakan keystore yang <strong>sama persis</strong> dengan yang digunakan pada rilis sebelumnya.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Verifikasi APK sebelum upload</strong>
+            <p>Uji terlebih dahulu AAB baru di perangkat atau emulator untuk memastikan build berjalan tanpa error sebelum diunggah ke Play Console.</p>
+          </div>
+        </li>
+      </ol>
+
+      <h3>5.3 Upload di Play Console</h3>
+
+      <ol class="step-list">
+        <li>
+          <div>
+            <strong>Navigasi ke Production → Create new release</strong>
+            <p>Buka <strong>Release → Production</strong> di Play Console, kemudian klik <strong>Create new release</strong>.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Upload AAB baru</strong>
+            <p>Unggah file AAB baru. Play Console akan otomatis mendeteksi bahwa ini adalah versi yang lebih baru dari yang sedang live.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Tulis What's new (Release notes)</strong>
+            <p>Isi ringkasan perubahan pada versi ini. Pengguna akan melihat teks ini di halaman update Play Store. Tulis dengan jelas dan ringkas — contoh:</p>
+            <ul class="bullet-list" style="margin-top: 8px;">
+              <li>Perbaikan bug pada fitur unggah dokumen.</li>
+              <li>Peningkatan performa saat membuka profil pengguna.</li>
+              <li>Pembaruan tampilan halaman utama.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Review dan submit</strong>
+            <p>Klik <strong>Review release</strong>, pastikan tidak ada error kritis, kemudian klik <strong>Start rollout to Production</strong>.</p>
+          </div>
+        </li>
+      </ol>
+
+      <h3>5.4 Staged Rollout (Opsional)</h3>
+
+      <p>
+        Untuk update besar yang berisiko, Google Play Console menyediakan opsi <strong>Staged rollout</strong> — merilis update hanya ke persentase tertentu dari pengguna terlebih dahulu sebelum disebarkan penuh.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Persentase Rollout</th>
+            <th>Kapan Digunakan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10%</td>
+            <td>Update mayor dengan perubahan besar pada arsitektur atau UI</td>
+          </tr>
+          <tr>
+            <td>20–50%</td>
+            <td>Update fitur baru yang sudah diuji internal</td>
+          </tr>
+          <tr>
+            <td>100%</td>
+            <td>Patch bug kecil atau update rutin yang sudah teruji</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Pantau crash rate dan ANR rate selama 24–48 jam setelah rollout. Jika angkanya tetap stabil, lanjutkan ke 100%. Jika ada lonjakan masalah, gunakan opsi <strong>Halt rollout</strong> untuk menghentikan distribusi sementara.</p>
+
+      <div class="callout-warn callout">
+        <p>
+          <strong>Perhatian:</strong> Setelah rollout dihentikan (halted), pengguna yang sudah menerima update tidak dapat di-downgrade. Pastikan pengujian sudah menyeluruh sebelum memulai rollout, terutama untuk update yang mengubah struktur database lokal.
+        </p>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- SECTION 6 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">6.</span>
+        <h2>Ringkasan Informasi Play Console</h2>
+      </div>
+
+      <p>Berikut adalah informasi teknis aplikasi yang saat ini terdaftar di Google Play Console, sebagai referensi bagi developer yang bergabung di kemudian hari.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Informasi</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nama Aplikasi</td>
+            <td>Maritim Muda Connect</td>
+          </tr>
+          <tr>
+            <td>Package Name</td>
+            <td><code>com.maritim.maritimmudaconnect</code></td>
+          </tr>
+          <tr>
+            <td>Platform</td>
+            <td>Android</td>
+          </tr>
+          <tr>
+            <td>Versi Produksi Terakhir</td>
+            <td>Dirilis 3 Juni 2026 · 100% rollout · Phones and tablets + 2 more</td>
+          </tr>
+          <tr>
+            <td>Developer Account</td>
+            <td>ID: 7086401293690042261</td>
+          </tr>
+          <tr>
+            <td>Kontak Resmi</td>
+            <td>admin@maritimmuda.id</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <p>
+          Untuk mendapatkan akses ke Play Console, hubungi pemilik akun developer agar dapat ditambahkan sebagai pengguna dengan hak akses yang sesuai melalui menu <strong>Users and permissions</strong> di Play Console.
+        </p>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- Footer -->
+    <div class="footer">
+      <h3>Kontak Tim Pengembangan</h3>
+      <p>
+        Untuk pertanyaan teknis, kendala akses Play Console, atau hal lain terkait proses rilis, hubungi tim inti pengembangan melalui:
+      </p>
+      <p style="margin-top: 16px;">
+        <strong>Maritim Muda Connect</strong> — Tim Pengembangan<br />
+        Surel: <a href="mailto:maritimmuda.id@gmail.com">maritimmuda.id@gmail.com</a>
+      </p>
+
+      <p class="copyright">
+        © 2025 Maritim Muda Connect. Semua hak dilindungi undang-undang. Panduan Rilis Play Store v1.0 — Juni 2025
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>
