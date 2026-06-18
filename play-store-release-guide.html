@@ -147,7 +147,7 @@
       flex: 1;
     }
 
-    .step-list li strong {
+    .step-list li > div > strong:first-child {
       display: block;
       font-family: 'Georgia', serif;
       font-size: 16px;
@@ -383,7 +383,7 @@
     </p>
 
     <div class="meta-bar">
-      <span><strong>Versi:</strong> 1.0</span>
+      <span><strong>Versi:</strong> 1.1</span>
       <span><strong>Platform:</strong> <span class="accent">Android</span></span>
       <span><strong>Console:</strong> <span class="accent">Google Play Console</span></span>
     </div>
@@ -396,16 +396,16 @@
       </div>
 
       <p>
-        Dokumen ini merupakan referensi bagi developer <strong>Maritim Muda Connect</strong> dalam mengelola siklus rilis aplikasi di Google Play Store, yang mencakup tiga fase utama: persiapan dan rilis awal ke produksi, langkah-langkah pasca-rilis, serta prosedur pembaruan versi aplikasi.
+        Dokumen ini merupakan referensi bagi developer <strong>Maritim Muda Connect</strong> dalam mengelola siklus rilis aplikasi di Google Play Store secara menyeluruh — mulai dari registrasi akun developer, pembuatan aplikasi, tahap pengujian wajib (closed testing), persiapan dan rilis awal ke produksi, langkah-langkah pasca-rilis, hingga prosedur pembaruan versi aplikasi.
       </p>
 
       <p>
-        Dokumen ini dibuat dengan asumsi developer telah memiliki akses ke Google Play Console dan aplikasi telah melewati tahap closed testing selama minimal 14 hari sebagaimana disyaratkan oleh Google.
+        Bagian awal dokumen (Bagian 2–5) ditujukan terutama bagi developer baru yang belum memiliki akses ke Play Console atau yang sedang menyiapkan listing aplikasi dari nol. Bagi developer yang sudah aktif mengelola aplikasi yang sudah live, dapat langsung menuju Bagian 6 untuk prosedur rilis ke produksi.
       </p>
 
       <div class="callout">
         <p>
-          <strong>Prasyarat:</strong> Sebelum melanjutkan ke panduan ini, pastikan proses closed testing telah selesai dan aplikasi telah menerima minimal 12 ulasan dari tester aktif. Persyaratan ini wajib dipenuhi sebelum mengajukan akses produksi ke Google Play.
+          <strong>Catatan:</strong> Untuk akun developer individu yang baru, Google mewajibkan aplikasi melewati tahap closed testing dengan minimal 12 tester aktif selama 14 hari berturut-turut sebelum opsi rilis ke publik dapat diakses. Lihat Bagian 5 untuk detail lengkap persyaratan ini.
         </p>
       </div>
     </div>
@@ -416,31 +416,139 @@
     <div class="section">
       <div class="section-header">
         <span class="section-num">2.</span>
+        <h2>Registrasi Akun Developer & Pembuatan Aplikasi</h2>
+      </div>
+
+      <p>
+        Bagian ini relevan bagi developer yang belum memiliki akun Google Play Console, atau yang sedang menyiapkan aplikasi baru dari nol. Jika akun dan aplikasi sudah tersedia, bagian ini dapat dilewati.
+      </p>
+
+      <h3>2.1 Registrasi Akun Developer (Akun Individu)</h3>
+
+      <ol class="step-list">
+        <li>
+          <div>
+            <strong>Akses Google Play Console</strong>
+            <p>Buka <strong>play.google.com/console</strong> dan masuk menggunakan akun Gmail yang akan didedikasikan untuk aplikasi tersebut.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Pilih tipe akun</strong>
+            <p>Pilih <strong>Personal Account</strong> (Akun Individu) pada saat pendaftaran.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Isi informasi developer</strong>
+            <p>Masukkan nama developer (yang akan tampil di Play Store), nama legal sesuai kartu identitas, alamat lengkap, dan nomor telepon yang aktif.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Bayar biaya registrasi</strong>
+            <p>Lakukan pembayaran satu kali sebesar <strong>$25 USD</strong> melalui Google Pay menggunakan kartu kredit atau debit yang mendukung transaksi internasional.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Verifikasi identitas</strong>
+            <p>Unggah foto dokumen identitas resmi (KTP, SIM, atau Paspor) yang cocok dengan nama legal yang didaftarkan. Proses verifikasi umumnya memakan waktu beberapa jam hingga beberapa hari.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout">
+        <p>
+          Setelah verifikasi disetujui, dashboard utama Play Console akan terbuka dan developer dapat mulai mendaftarkan aplikasi.
+        </p>
+      </div>
+
+      <h3>2.2 Membuat Aplikasi Baru (Create App)</h3>
+
+      <ol class="step-list">
+        <li>
+          <div>
+            <strong>Klik "Create app"</strong>
+            <p>Pada halaman utama Play Console, klik tombol <strong>Create app</strong> di sebelah kanan atas.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Lengkapi informasi awal</strong>
+            <p><strong>App name</strong> (maks. 30 karakter), <strong>Default language</strong>, jenis produk (<strong>App or Game</strong>), dan status (<strong>Free or Paid</strong>).</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Centang Declarations</strong>
+            <p>Setujui kebijakan <em>Developer Program Policies</em> dan undang-undang ekspor Amerika Serikat (US export laws).</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Klik "Create app"</strong>
+            <p>Klik tombol di pojok kanan bawah untuk menyelesaikan pembuatan aplikasi.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout-warn callout">
+        <p>
+          <strong>Perhatian:</strong> Status <strong>Free or Paid</strong> tidak dapat diubah setelah aplikasi dipublikasikan — aplikasi gratis tidak bisa diubah menjadi berbayar di kemudian hari.
+        </p>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- SECTION 3 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">3.</span>
         <h2>Gambaran Umum Alur Rilis</h2>
       </div>
 
-      <p>Secara garis besar, rilis aplikasi ke Play Store mengikuti alur berikut:</p>
+      <p>Secara garis besar, rilis aplikasi ke Play Store — mulai dari akun baru hingga live di publik — mengikuti alur berikut:</p>
 
       <div class="phase">
         <p class="phase-label">Tahap 1</p>
+        <h3>Registrasi Akun & Buat Aplikasi</h3>
+        <p>Daftarkan akun developer, bayar biaya registrasi $25, verifikasi identitas, dan buat listing aplikasi baru.</p>
+      </div>
+
+      <div class="phase">
+        <p class="phase-label">Tahap 2</p>
+        <h3>Setup Aplikasi & Deklarasi Wajib</h3>
+        <p>Lengkapi privacy policy, app access, ads, content rating, target audience, dan data safety.</p>
+      </div>
+
+      <div class="phase">
+        <p class="phase-label">Tahap 3</p>
+        <h3>Closed Testing</h3>
+        <p>Undang minimal 12 tester dan penuhi syarat penggunaan aktif selama 14 hari berturut-turut.</p>
+      </div>
+
+      <div class="phase">
+        <p class="phase-label">Tahap 4</p>
         <h3>Persiapan AAB & Aset</h3>
         <p>Build AAB production, siapkan screenshots, deskripsi, dan semua aset listing di Play Console.</p>
       </div>
 
       <div class="phase">
-        <p class="phase-label">Tahap 2</p>
+        <p class="phase-label">Tahap 5</p>
         <h3>Pengajuan Production Release</h3>
         <p>Upload AAB ke track Production, isi release notes, dan kirim ke review Google Play.</p>
       </div>
 
       <div class="phase">
-        <p class="phase-label">Tahap 3</p>
+        <p class="phase-label">Tahap 6</p>
         <h3>Review & Publikasi</h3>
-        <p>Google melakukan review teknis dan kebijakan. Proses biasanya berlangsung 1–3 hari kerja.</p>
+        <p>Google melakukan review teknis dan kebijakan. Untuk akun individu baru, proses ini biasanya berlangsung 2–7 hari kerja.</p>
       </div>
 
       <div class="phase">
-        <p class="phase-label">Tahap 4</p>
+        <p class="phase-label">Tahap 7</p>
         <h3>Pasca-Rilis</h3>
         <p>Monitor crash rate, ANR, dan ulasan pengguna. Siapkan patch update jika diperlukan.</p>
       </div>
@@ -454,10 +562,122 @@
 
     <hr />
 
-    <!-- SECTION 3 -->
+    <!-- SECTION 4 -->
     <div class="section">
       <div class="section-header">
-        <span class="section-num">3.</span>
+        <span class="section-num">4.</span>
+        <h2>Setup Aplikasi & Deklarasi Wajib</h2>
+      </div>
+
+      <p>
+        Setelah aplikasi dibuat, Play Console mewajibkan beberapa formulir deklarasi diisi sebelum aplikasi dapat diajukan ke tahap pengujian maupun produksi. Form-form ini dapat diakses melalui bagian <strong>"Set up your app"</strong> pada Dashboard aplikasi.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Deklarasi</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Privacy Policy</td>
+            <td>Masukkan URL halaman kebijakan privasi aplikasi yang dapat diakses publik.</td>
+          </tr>
+          <tr>
+            <td>App Access</td>
+            <td>Tentukan apakah aplikasi memerlukan login khusus (username/password) untuk diakses, atau dapat diakses penuh tanpa batasan.</td>
+          </tr>
+          <tr>
+            <td>Ads</td>
+            <td>Nyatakan apakah aplikasi mengandung iklan atau tidak.</td>
+          </tr>
+          <tr>
+            <td>Content Rating</td>
+            <td>Isi kuesioner IARC untuk menentukan rating usia pengguna. Langkah detail dijelaskan di Bagian 6.3.</td>
+          </tr>
+          <tr>
+            <td>Target Audience</td>
+            <td>Tentukan rentang usia target pengguna aplikasi.</td>
+          </tr>
+          <tr>
+            <td>News Apps & Data Safety</td>
+            <td>Nyatakan apakah aplikasi merupakan aplikasi berita, dan isi formulir Data Safety dengan jujur mengenai data pengguna yang diambil, disimpan, atau dibagikan.</td>
+          </tr>
+          <tr>
+            <td>Government Apps</td>
+            <td>Nyatakan apakah aplikasi mewakili instansi pemerintah atau tidak.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <p>
+          Seluruh formulir deklarasi ini wajib berstatus lengkap ("complete") sebelum Play Console mengizinkan aplikasi diajukan ke closed testing maupun production. Status kelengkapan dapat dipantau di halaman Dashboard aplikasi.
+        </p>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- SECTION 5 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">5.</span>
+        <h2>Closed Testing — Tahap Pengujian Wajib</h2>
+      </div>
+
+      <p>
+        Google mewajibkan semua akun developer individu baru untuk melewati tahap pengujian tertutup (closed testing) sebelum diizinkan merilis aplikasi ke publik. Tahap ini tidak dapat dilewati untuk akun baru.
+      </p>
+
+      <ol class="step-list">
+        <li>
+          <div>
+            <strong>Buka menu Closed testing</strong>
+            <p>Navigasi ke <strong>Testing → Closed testing</strong> di Play Console.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Buat track pengujian</strong>
+            <p>Buat track pengujian baru dan unggah file aplikasi pertama dalam format <code>.aab</code> (Android App Bundle).</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Undang tester</strong>
+            <p>Daftarkan minimal <strong>12 alamat email Google</strong> dari rekan tim atau kolega untuk menjadi tester.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Penuhi syarat lolos</strong>
+            <p>Tester wajib mengunduh aplikasi dan membiarkannya terinstal serta digunakan secara aktif selama <strong>14 hari berturut-turut</strong>.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Ajukan ke produksi</strong>
+            <p>Setelah syarat 14 hari terpenuhi secara valid oleh sistem Google, opsi untuk mengajukan aplikasi ke tahap produksi (publik) akan terbuka.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout-warn callout">
+        <p>
+          <strong>Perhatian:</strong> Jika tester tidak aktif menggunakan aplikasi selama periode tersebut, sistem Google tidak akan menghitungnya sebagai hari yang valid, sehingga periode pengujian dapat menjadi lebih lama dari 14 hari kalender.
+        </p>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- SECTION 6 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">6.</span>
         <h2>Langkah Rilis ke Production</h2>
       </div>
 
@@ -465,7 +685,7 @@
         Berikut adalah langkah-langkah teknis untuk merilis aplikasi ke track Production. Ikuti urutan ini secara seksama agar tidak ada langkah yang terlewat.
       </p>
 
-      <h3>3.1 Persiapan Build</h3>
+      <h3>6.1 Persiapan Build</h3>
 
       <ol class="step-list">
         <li>
@@ -494,7 +714,7 @@
         </p>
       </div>
 
-      <h3>3.2 Mengisi Informasi Listing di Play Console</h3>
+      <h3>6.2 Mengisi Informasi Listing di Play Console</h3>
 
       <p>Masuk ke <strong>play.google.com/console</strong>, buka aplikasi Maritim Muda Connect, kemudian navigasi ke <strong>Store presence → Main store listing</strong>. Pastikan semua kolom berikut sudah terisi dengan benar:</p>
 
@@ -541,7 +761,7 @@
         </tbody>
       </table>
 
-      <h3>3.3 Mengisi Content Rating</h3>
+      <h3>6.3 Mengisi Content Rating</h3>
 
       <ol class="step-list">
         <li>
@@ -564,7 +784,7 @@
         </li>
       </ol>
 
-      <h3>3.4 Upload AAB dan Membuat Production Release</h3>
+      <h3>6.4 Upload AAB dan Membuat Production Release</h3>
 
       <ol class="step-list">
         <li>
@@ -602,10 +822,10 @@
 
     <hr />
 
-    <!-- SECTION 4 -->
+    <!-- SECTION 7 -->
     <div class="section">
       <div class="section-header">
-        <span class="section-num">4.</span>
+        <span class="section-num">7.</span>
         <h2>Langkah Setelah Aplikasi Live</h2>
       </div>
 
@@ -613,7 +833,7 @@
         Setelah aplikasi berhasil dipublikasikan dan dapat diunduh di Google Play Store, terdapat beberapa langkah penting yang perlu dilakukan agar kualitas dan pertumbuhan aplikasi dapat dijaga.
       </p>
 
-      <h3>4.1 Pantau Performa Teknis</h3>
+      <h3>7.1 Pantau Performa Teknis</h3>
 
       <p>Akses menu <strong>Android vitals</strong> di Play Console untuk memantau tiga indikator utama:</p>
 
@@ -623,7 +843,7 @@
         <li><strong>Install base</strong> — Total pengguna aktif yang saat ini menggunakan aplikasi. Pantau tren pertumbuhannya secara mingguan.</li>
       </ul>
 
-      <h3>4.2 Pantau Ulasan Pengguna</h3>
+      <h3>7.2 Pantau Ulasan Pengguna</h3>
 
       <ol class="step-list">
         <li>
@@ -646,7 +866,7 @@
         </li>
       </ol>
 
-      <h3>4.3 Verifikasi Tampilan Listing</h3>
+      <h3>7.3 Verifikasi Tampilan Listing</h3>
 
       <p>Buka halaman aplikasi di Google Play Store secara langsung (dari perangkat Android atau browser) dan verifikasi hal berikut:</p>
 
@@ -657,7 +877,7 @@
         <li>Rating konten (content rating) sesuai dengan target audiens aplikasi.</li>
       </ul>
 
-      <h3>4.4 Informasikan kepada Pengguna dan Stakeholder</h3>
+      <h3>7.4 Informasikan kepada Pengguna dan Stakeholder</h3>
 
       <ul class="bullet-list">
         <li><strong>Bagikan link Play Store</strong> — Distribusikan tautan langsung ke halaman aplikasi kepada komunitas, media sosial, dan mitra terkait.</li>
@@ -674,10 +894,10 @@
 
     <hr />
 
-    <!-- SECTION 5 -->
+    <!-- SECTION 8 -->
     <div class="section">
       <div class="section-header">
-        <span class="section-num">5.</span>
+        <span class="section-num">8.</span>
         <h2>Cara Update Aplikasi di Play Store</h2>
       </div>
 
@@ -685,7 +905,7 @@
         Setiap kali terdapat perbaikan bug, peningkatan fitur, atau pembaruan tampilan, developer perlu merilis versi baru melalui Play Console. Berikut adalah prosedur standar pembaruan aplikasi.
       </p>
 
-      <h3>5.1 Perbarui Versi di Kode</h3>
+      <h3>8.1 Perbarui Versi di Kode</h3>
 
       <ol class="step-list">
         <li>
@@ -702,13 +922,13 @@
         </li>
       </ol>
 
-      <h3>5.2 Build AAB Baru</h3>
+      <h3>8.2 Build AAB Baru</h3>
 
       <ol class="step-list">
         <li>
           <div>
             <strong>Jalankan build signed AAB</strong>
-            <p>Ikuti proses yang sama seperti pada Bagian 3.1. Gunakan keystore yang <strong>sama persis</strong> dengan yang digunakan pada rilis sebelumnya.</p>
+            <p>Ikuti proses yang sama seperti pada Bagian 6.1. Gunakan keystore yang <strong>sama persis</strong> dengan yang digunakan pada rilis sebelumnya.</p>
           </div>
         </li>
         <li>
@@ -719,7 +939,7 @@
         </li>
       </ol>
 
-      <h3>5.3 Upload di Play Console</h3>
+      <h3>8.3 Upload di Play Console</h3>
 
       <ol class="step-list">
         <li>
@@ -753,7 +973,7 @@
         </li>
       </ol>
 
-      <h3>5.4 Staged Rollout (Opsional)</h3>
+      <h3>8.4 Staged Rollout (Opsional)</h3>
 
       <p>
         Untuk update besar yang berisiko, Google Play Console menyediakan opsi <strong>Staged rollout</strong> — merilis update hanya ke persentase tertentu dari pengguna terlebih dahulu sebelum disebarkan penuh.
@@ -793,10 +1013,10 @@
 
     <hr />
 
-    <!-- SECTION 6 -->
+    <!-- SECTION 9 -->
     <div class="section">
       <div class="section-header">
-        <span class="section-num">6.</span>
+        <span class="section-num">9.</span>
         <h2>Ringkasan Informasi Play Console</h2>
       </div>
 
@@ -858,7 +1078,7 @@
       </p>
 
       <p class="copyright">
-        © 2025 Maritim Muda Connect. Semua hak dilindungi undang-undang. Panduan Rilis Play Store v1.0 — Juni 2025
+        © 2026 Maritim Muda Connect. Semua hak dilindungi undang-undang. Panduan Rilis Play Store v1.1 — Juni 2026
       </p>
     </div>
 
